@@ -28,6 +28,6 @@ class DataRegister extends Model
 
     public function institusi()
     {
-        return $this->belongsTo('App\MasterInstitusi');
+        return $this->belongsTo('App\MasterInstitusi', 'master_institusi_id');
     }
 }

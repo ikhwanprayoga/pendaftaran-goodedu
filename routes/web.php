@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return redirect()->route('pendaftaran.index');
     return view('welcome');
 });
 
@@ -24,6 +25,19 @@ Route::group(['prefix' => 'get-data'], function () {
 
 Route::group(['prefix' => 'pendaftaran'], function () {
     Route::get('/', 'PendaftaranController@index')->name('pendaftaran.index');
+    Route::get('/home/{id}', 'PendaftaranController@home')->name('pendaftaran.home');
     Route::post('/store', 'PendaftaranController@store')->name('pendaftaran.store');
     Route::get('/detail/{id}', 'PendaftaranController@detail')->name('pendaftaran.detail');
 });
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
+    Route::get('data-pendaftar', 'PendaftaranController@index')->name('admin.data-pendaftar.index');
+});
+
+Auth::routes([
+    'register' => false,
+    'reset' => false,
+    'verify' => false,
+]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
