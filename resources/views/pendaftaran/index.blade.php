@@ -13,26 +13,37 @@
             <div class="card-heading"></div>
             <div class="card-body">
                 <h2 class="title">Formulir Registrasi</h2>
+                <div class="col-lg-12">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
                 <form method="POST" action="{{ route('pendaftaran.store') }}">
                     @csrf
                     <div class="input-group">
-                        <input class="input--style-2" type="text" placeholder="Nama Kamu" name="nama">
+                        <input class="input--style-2" type="text" placeholder="Nama Kamu" name="nama" required>
                     </div>
                     <div class="input-group">
-                        <input class="input--style-2" type="text" placeholder="Tempat Lahir Kamu" name="tempat_lahir">
+                        <input class="input--style-2" type="text" placeholder="Tempat Lahir Kamu" name="tempat_lahir" required>
                     </div>
                     <div class="row row-space">
                         <div class="col-2">
                             <div class="input-group">
-                                <input class="input--style-2 js-datepicker" type="text" placeholder="Tanggal Lahir Kamu" name="tanggal_lahir">
+                                <input class="input--style-2 js-datepicker" type="text" placeholder="Tanggal Lahir Kamu" name="tanggal_lahir" required>
                                 <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="input-group">
                                 <div class="rs-select2 js-select-simple select--no-search">
-                                    <select name="jenis_kelamin">
-                                        <option disabled="disabled" selected="selected">Jenis Kelamin</option>
+                                    <select name="jenis_kelamin" required>
+                                        <option disabled="disabled" selected="selected" value="">Jenis Kelamin</option>
                                         <option value="L">Laki-laki</option>
                                         <option value="P">Perempuan</option>
                                     </select>
@@ -44,22 +55,22 @@
                     <div class="row row-space">
                         <div class="col-2">
                             <div class="input-group">
-                                <input class="input--style-2" type="text" placeholder="Nomor HP Kamu" name="no_hp">
+                                <input class="input--style-2" type="text" placeholder="Nomor HP Kamu" name="no_hp" required>
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="input-group">
-                                <input class="input--style-2" type="email" placeholder="Email Kamu" name="email">
+                                <input class="input--style-2" type="email" placeholder="Email Kamu" name="email" required>
                             </div>
                         </div>
                     </div>
                     <div class="input-group">
-                        <input class="input--style-2" type="text" placeholder="Alamat Kamu" name="alamat">
+                        <input class="input--style-2" type="text" placeholder="Alamat Kamu" name="alamat" required>
                     </div>
                     <div class="input-group">
                         <div class="rs-select2 js-select-simple select--no-search">
-                            <select name="kategori_pendaftar" id="kategori-pendaftar" name="kategori_pendaftar">
-                                <option disabled="disabled" selected="selected">Pilih Kategori Pendaftar</option>
+                            <select name="kategori_pendaftar" id="kategori-pendaftar" name="kategori_pendaftar" required>
+                                <option disabled="disabled" selected="selected" value="">Pilih Kategori Pendaftar</option>
                                 <option value="m">Mahasiswa</option>
                                 <option value="s">Siswa</option>
                             </select>
@@ -68,7 +79,7 @@
                     </div>
                     <div class="input-group" id="div-institusi" hidden>
                         <div class="rs-select2 js-select-simple select--no-search">
-                            <select name="institusi" id="institusi" name="institusi">
+                            <select name="institusi" id="institusi" name="institusi" required>
                                 {{-- <option disabled="disabled" selected="selected">Pilih Kategori Pendaftar</option> --}}
                             </select>
                             <div class="select-dropdown"></div>

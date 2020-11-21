@@ -22,6 +22,17 @@ class PendaftaranController extends Controller
     public function store(Request $request)
     {
         // return $request->all();
+
+        $request->validate([
+            'nama' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'jenis_kelamin' => 'required',
+            'no_hp' => 'required',
+            'alamat' => 'required',
+            'email' => 'required|unique:data_registers|max:255',
+        ]);
+
         $tanggalLahir = explode("/",$request->tanggal_lahir);
 
         $input = [
