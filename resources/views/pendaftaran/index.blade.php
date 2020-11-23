@@ -7,7 +7,7 @@
 @endpush
 
 @section('content')
-<div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+<div class="page-wrapper p-t-180 p-b-100 font-robo" style="background:#5897fb">
     <div class="wrapper wrapper--w960">
         <div class="card card-2">
             <div class="card-heading"></div>
