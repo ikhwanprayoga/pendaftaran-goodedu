@@ -3,7 +3,20 @@
 @section('title', 'Pendaftaran Baru')
 
 @push('css')
-    
+<style>
+    .alert-success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+    .alert {
+        position: relative;
+        padding: .75rem 1.25rem;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: .25rem;
+    }
+</style>
 @endpush
 
 @section('content')
@@ -13,6 +26,13 @@
             <div class="card-heading"></div>
             <div class="card-body">
                 <h2 class="title">Data Registrasi</h2>
+                <div class="col-lg-12">
+                    @if(session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
+                </div>
                 <form action="">
                     <div class="input-group">
                         <input class="input--style-2" type="text" value="{{ $data->nama }}" disabled>

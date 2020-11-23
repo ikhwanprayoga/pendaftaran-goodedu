@@ -69,7 +69,7 @@ class PendaftaranController extends Controller
         // return $input;
         $data = DataRegister::create($input);
 
-        return redirect()->route('pendaftaran.home', ['id' => $data->id]);
+        return redirect()->route('pendaftaran.home', ['id' => $data->id])->with('success', 'Selamat, Registrasi Anda Berhasil');
     }
 
     public function get_data_sekolah()
